@@ -1,0 +1,24 @@
+<!DOCTYPE htrnl>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>{{ current_rubric.name }} - Доска объявлений</title>
+  </head>
+  <body>
+    <hl>Объявления</hl>
+    <h2>Рубрика: {{ current_rubric.name }} </h2>
+    <div>
+    <а hrеf="/bbоаrd/">Главная</а>
+    {% for rubric in rubrics %}
+    <а href="/bboard/{{ rubric.pk }}/">{{ rubric.name }}</а>
+    { % endfor %)
+    </div>
+    {% for bb i n bbs %)
+    <div>
+      <h2>{{ bb.title }}</h2>
+      <р> { { bb. content } } </ р>
+      <р> { { bb.published|data:"d.m.Y H:i:s" }}</р>
+    </div>
+    {% endfor %}
+  </body>
+</html>
