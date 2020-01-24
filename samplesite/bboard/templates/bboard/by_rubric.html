@@ -1,23 +1,23 @@
-<!DOCTYPE htrnl>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <title>{{ current_rubric.name }} - Доска объявлений</title>
   </head>
   <body>
-    <hl>Объявления</hl>
+    <h1>Объявления</h1>
     <h2>Рубрика: {{ current_rubric.name }} </h2>
     <div>
-    <а hrеf="/bbоаrd/">Главная</а>
-    {% for rubric in rubrics %}
-    <а href="/bboard/{{ rubric.pk }}/">{{ rubric.name }}</а>
-    { % endfor %)
+      <a href="/bboard/">Главная</a>
+      {% for rubric in rubrics %}
+      <a href="/bboard/{{ rubric.pk }}/">{{ rubric.name }}</a>
+      {% endfor %}
     </div>
-    {% for bb i n bbs %)
+    {% for bb in bbs %}
     <div>
-      <h2>{{ bb.title }}</h2>
-      <р> { { bb. content } } </ р>
-      <р> { { bb.published|data:"d.m.Y H:i:s" }}</р>
+        <h2>{{ bb.title }}</h2>
+        <p>{{ bb.content }}</p>
+        <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
     </div>
     {% endfor %}
   </body>
