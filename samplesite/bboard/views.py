@@ -1,17 +1,20 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
+from django.contrib.auth.decorators import login_required
 
 from .models import Bb
 from .models import Rubric
 from .forms import BbForm
 
+@login_required
 def index(request) :
     bbs = Bb.objects.all()
     rubrics = Rubric.objects.all()
     context = {'bbs': bbs, 'rubrics': rubrics}
     return render(request, 'bboard/index.html', context)
 
+@login_required
 def by_rubric(request, rubric_id):
     bbs = Bb.objects.filter(rubric=rubric_id)
     rubrics = Rubric.objects.all()
@@ -24,6 +27,7 @@ class BbCreateView(CreateView):
     form_class = BbForm
     success_url = reverse_lazy('index')
 
+    @login_required
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['rubrics'] = Rubric.objects.all()
